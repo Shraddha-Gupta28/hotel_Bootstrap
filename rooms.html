@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms - Indore Hotel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #344E5C;
+      --accent: #ff6b6b;
+      --light: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: var(--brand);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: transparent;
+      transition: 0.35s;
+    }
+    .navbar.scrolled {
+      background: rgba(33, 44, 50, 0.96);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    .navbar .nav-link {
+      color: rgba(255,255,255,0.9);
+      margin-right: 0.3rem;
+      position: relative;
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.25s;
+    }
+    .navbar .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(52,78,92,0.6), rgba(52,78,92,0.6)),
+                  url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg') 
+                  center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--light);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: bold;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+      animation: fadeIn 1.5s ease-in-out;
+      z-index: 2;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      top: -150px;
+      left: -150px;
+      animation: rotateCircle 20s linear infinite;
+      z-index: 1;
+    }
+    @keyframes rotateCircle {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 60px 0 30px;
+      font-weight: bold;
+      position: relative;
+      color: var(--brand);
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
+    /* Room Cards */
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+    }
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.1);
+    }
+    .card-title {
+      font-weight: 600;
+    }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .btn-dark {
+      background: var(--accent);
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-dark:hover {
+      background: #ff4c4c;
+      transform: scale(1.05);
+    }
+
+    /* Vision & Mission Flip Cards */
+    .flip-card {
+      background: transparent;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: var(--light);
+    }
+    .flip-card-front {
+      background-color: var(--brand);
+    }
+    .flip-card-back {
+      background-color: var(--accent);
+      transform: rotateY(180deg);
+    }
+
+    /* Background Video Section */
+    .video-section {
+      position: relative;
+      overflow: hidden;
+      height: 60vh;
+    }
+    .video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--light);
+      text-align: center;
+      padding: 20px;
+    }
+    .video-overlay h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: bold;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    }
+
+    /* Footer */
+    footer.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  footer.footer p {
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  footer.footer p:hover {
+    color: #ffdd59; /* hover effect */
+  }
+
+
+    /* Responsive */
+    @media (max-width:767px){
+      .hero {
+        min-height: 65vh;
+      }
+      .card-img-top {
+        height: 200px;
+      }
+      .flip-card-inner {
+        height: 220px;
+      }
+      .video-section {
+        height: 40vh;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <i class="bi bi-building brand-icon"></i>
+      <span>Indore Hotel</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+       <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/price.html">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/contact.html">Contact</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Our Luxury Rooms</h1>
+</div>
+
+<section class="container my-5">
+  <h2 class="section-title">Choose Your Perfect Stay</h2>
+  <div class="row g-4">
+    <!-- Standard Room -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.eiWbBASPlIJvZAPGxdkcXQHaD4" class="card-img-top" alt="Standard Room">
+        <div class="card-body">
+          <h5 class="card-title">Standard Room</h5>
+          <p class="card-text">Cozy and comfortable room with modern amenities, perfect for short stays.</p>
+          <p class="price">₹5,500 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deluxe Room -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.7fteOWWp5ESR5KQXgY_24QHaEh" class="card-img-top" alt="Deluxe Room">
+        <div class="card-body">
+          <h5 class="card-title">Deluxe Room</h5>
+          <p class="card-text">Spacious deluxe room with king-sized bed, balcony view, and breakfast.</p>
+          <p class="price">₹7,500 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Luxury Suite -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://cdn.marriottnetwork.com/uploads/sites/17/2018/03/The-Chatwal-Luxury-Collection-Hotel-New-York-Chatwal-Suite-Living-Room-Area.jpg" class="card-img-top" alt="Luxury Suite">
+        <div class="card-body">
+          <h5 class="card-title">Luxury Suite</h5>
+          <p class="card-text">Premium suite with living area, minibar, and personalized services.</p>
+          <p class="price">₹9,500 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Executive Room -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/21/2016/06/21042553/Executive-Room_23.jpg" class="card-img-top" alt="Executive Room">
+        <div class="card-body">
+          <h5 class="card-title">Executive Room</h5>
+          <p class="card-text">Modern room with workspace and premium facilities for business travelers.</p>
+          <p class="price">₹6,500 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Room -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://www.homestratosphere.com/wp-content/uploads/2018/12/family-room-photo-dec21-00020.jpg" class="card-img-top" alt="Family Room">
+        <div class="card-body">
+          <h5 class="card-title">Family Room</h5>
+          <p class="card-text">Spacious room with multiple beds and entertainment facilities for families.</p>
+          <p class="price">₹8,000 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Presidential Suite -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.FA--hi57p7xVhzbuctZOKAHaEb?rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" alt="Presidential Suite">
+        <div class="card-body">
+          <h5 class="card-title">Presidential Suite</h5>
+          <p class="card-text">Ultra-luxury suite with private lounge, panoramic view, and exclusive amenities.</p>
+          <p class="price">₹12,000 / night</p>
+          <a href="contact.html" class="btn btn-dark w-100">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Background Video Section -->
+<section class="video-section">
+  <video autoplay muted loop playsinline>
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay">
+    <h2>Experience Luxury Like Never Before</h2>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white text-center py-3 mt-0">
+  <div class="container">
+    <p class="mb-0">
+      &copy; 2025 <strong>Indore Hotel</strong>. All Rights Reserved.
+    </p>
+    <p class="small mb-0">
+      Designed with <span style="color:#ff4757;">❤</span> Shraddha Gupta
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

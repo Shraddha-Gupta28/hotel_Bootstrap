@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indore Hotel - Gallery</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #fff;
+      color: #344E5C;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    /* Navbar */
+.navbar {
+  background: transparent;
+  transition: 0.35s;
+}
+
+
+.navbar.scrolled {
+  background: rgba(52,78,92,0.96);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.9);
+  margin-right: 0.3rem;
+  position: relative;
+}
+
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+
+    /* Flip Card 3D Effect */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: 0px 6px 16px rgba(0,0,0,0.2);
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .flip-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, #344E5C, #516E7D);
+      color: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .flip-card-back h5 {
+      font-weight: bold;
+    }
+    .flip-card-back p {
+      font-size: 14px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(52,78,92,0.8), rgba(52,78,92,0.8)),
+                  url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-weight: bold;
+      font-size: 3rem;
+      animation: fadeInDown 1.5s ease;
+    }
+    @keyframes fadeInDown {
+      0% {opacity: 0; transform: translateY(-50px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    footer {
+      background: #344E5C;
+      color: white;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <i class="bi bi-building brand-icon"></i>
+        <span style="background-color: #516E7D;">Indore Hotel</span>
+      </a>
+   
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <ul class="navbar-nav ms-auto align-items-lg-center" style="background-color: #516E7D;">
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/price.html">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Our Gallery</h1>
+      <p>Explore the luxurious spaces and unforgettable experiences of Indore Hotel</p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Luxury Lobby">
+              </div>
+              <div class="flip-card-back">
+                <h5>Grand Lobby</h5>
+                <p>Experience the elegance of our grand lobby with modern architecture and warm hospitality.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Deluxe Room">
+              </div>
+              <div class="flip-card-back">
+                <h5>Deluxe Rooms</h5>
+                <p>Spacious and beautifully designed rooms with world-class amenities for your comfort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Fine Dining">
+              </div>
+              <div class="flip-card-back">
+                <h5>Fine Dining</h5>
+                <p>Indulge in gourmet delicacies prepared by our top chefs with an international menu.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.pexels.com/photos/1697076/pexels-photo-1697076.jpeg" alt="Swimming Pool">
+              </div>
+              <div class="flip-card-back">
+                <h5>Infinity Pool</h5>
+                <p>Relax and rejuvenate at our stunning infinity pool with a panoramic city view.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.pexels.com/photos/53464/sheraton-palace-hotel-lobby-architecture-san-francisco-53464.jpeg" alt="Conference Hall">
+              </div>
+              <div class="flip-card-back">
+                <h5>Conference Hall</h5>
+                <p>State-of-the-art conference halls for business meetings, events, and seminars.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Luxury Spa">
+              </div>
+              <div class="flip-card-back">
+                <h5>Luxury Spa</h5>
+                <p>Pamper yourself with our relaxing spa treatments and holistic wellness therapies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Bar & Lounge">
+              </div>
+              <div class="flip-card-back">
+                <h5>Bar & Lounge</h5>
+                <p>Enjoy premium cocktails and live music in our stylish lounge bar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?auto=format&fit=crop&w=800&q=80" alt="Banquet Hall">
+              </div>
+              <div class="flip-card-back">
+                <h5>Banquet Hall</h5>
+                <p>Celebrate your special occasions in our beautifully decorated banquet halls.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="col-md-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://i.pinimg.com/originals/66/d3/52/66d352b3e23f3c6359da4a0390c36fb4.jpg" alt="Gym">
+              </div>
+              <div class="flip-card-back">
+                <h5>Fitness Center</h5>
+                <p>Stay fit during your stay with our modern fitness equipment and trainers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p class="mb-0">&copy; 2025 Indore Hotel. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

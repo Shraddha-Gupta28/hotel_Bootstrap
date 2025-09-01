@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Indore Hotel — Home</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+ :root {
+  --brand: #344E5C;
+  --brand-2: #2a3e49;
+  --light: #fff;
+  --accent: #FFD166;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--brand);
+  margin: 0;
+}
+
+
+/* Navbar */
+.navbar {
+  background: transparent;
+  transition: 0.35s;
+}
+
+
+.navbar.scrolled {
+  background: rgba(52,78,92,0.96);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.9);
+  margin-right: 0.3rem;
+  position: relative;
+}
+
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--light);
+  background: linear-gradient(rgba(52,78,92,0.45), rgba(52,78,92,0.7)),
+              url('https://images.squarespace-cdn.com/content/v1/61085dcb35f7242682cd3122/ad95e52f-33bb-40a8-a82b-316155a019ab/m+g+road+and++holkarstedium++01a_credit_raju+pawar.jpg?format=1500w') center/cover fixed;
+}
+
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: 0.3px;
+  margin-bottom: 0.6rem;
+}
+
+
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+}
+
+/* Button */
+.btn-3d {
+  background: var(--accent);
+  color: #1f2a30;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.1rem;
+  box-shadow: 0 8px 0 #e3ba59, 0 14px 28px rgba(0,0,0,0.18);
+  transition: 0.15s;
+}
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 0 #e3ba59, 0 18px 30px rgba(0,0,0,0.22);
+}
+
+/* Sections */
+section {
+  padding: 80px 0;
+}
+.section-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.section-sub {
+  color: #486270;
+  opacity: 0.95;
+  margin-bottom: 1.25rem;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s cubic-bezier(0.2,0.9,0.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cards */
+.shadow-hover {
+  transition: 0.25s;
+}
+
+.shadow-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+}
+
+
+/* Flip card */
+.flip-card {
+  perspective: 1200px;
+}
+
+.flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.flip-front img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.flip-back {
+  background: var(--brand);
+  color: var(--light);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+/* Tabs */
+.nav-pills .nav-link {
+  border-radius: 12px;
+  background: #f3f9fb;
+  color: var(--brand);
+}
+
+.nav-pills .nav-link.active {
+  background: var(--brand);
+  color: var(--light);
+}
+
+/* Gallery */
+.gallery img {
+  border-radius: 12px;
+  transition: 0.35s;
+}
+
+.gallery a:hover img {
+  transform: scale(1.06);
+}
+
+/* Footer */
+footer {
+  background: var(--brand-2);
+  color: #e7f2f7;
+  padding: 40px 0;
+}
+
+footer a {
+  color: #d7e6ec;
+  text-decoration: none;
+}
+
+/* Badge */
+.badge-theme {
+  background: var(--brand);
+  color: var(--light);
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 65vh;
+    padding: 40px 0;
+  }
+  .flip-front img {
+    height: 200px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <i class="bi bi-building brand-icon"></i>
+        <span>Indore Hotel</span>
+      </a>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/price.html">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/contact.html">Contact</a></li>
+        </ul>
+
+        <div class="d-flex ms-3 mt-3 mt-lg-0">
+          <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i> Search</button>
+          <button class="btn btn-3d" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-calendar-check me-1"></i> Book Now</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main-->
+  <header class="hero" id="home">
+    <div class="container">
+      <span class="tag">Luxury • Comfort • Indore</span>
+      <h1 class="mt-3">Stay in the Heart of <span style="color:var(--accent)">Indore</span></h1>
+      <p class="lead mb-4">Boutique comfort, modern amenities, and warm hospitality — crafted for business & leisure.</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="rooms.html" class="btn btn-light">Explore Rooms</a>
+        <button class="btn btn-3d" data-bs-toggle="modal" data-bs-target="#bookModal">Reserve Your Stay</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <img src="https://media.architecturaldigest.com/photos/56c5f46800777f0f265e4942/master/pass/paris-landmarks-15.jpg" class="img-fluid rounded-4 shadow-hover" alt="Lobby">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="section-title">About Us</h2>
+          <p class="section-sub">Located minutes from Rajwada & Chappan Dukan, Indore Hotel blends classic elegance with fresh local flavour. Our palette and service are designed around comfort and style.</p>
+          <div class="row g-3">
+            <div class="col-6"><div class="p-3 bg-light rounded-4 shadow-sm"><i class="bi bi-wifi me-2"></i> High-speed Wi-Fi</div></div>
+            <div class="col-6"><div class="p-3 bg-light rounded-4 shadow-sm"><i class="bi bi-cup-hot me-2"></i> Complimentary Breakfast</div></div>
+            <div class="col-6"><div class="p-3 bg-light rounded-4 shadow-sm"><i class="bi bi-geo me-2"></i> Prime Location</div></div>
+            <div class="col-6"><div class="p-3 bg-light rounded-4 shadow-sm"><i class="bi bi-shield-check me-2"></i> 24x7 Security</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX INFO BAND -->
+   <div>
+  <section class="parallax text-center" style="padding:60px 0;">
+    <div class="container">
+      <h3 class="text-white mb-2">Feel the City, Love the Stay</h3>
+      <p class="text-white mb-0">Walk to the best street food, markets, and heritage — Indore at your doorstep.</p>
+    </div>
+  </section>
+</div>
+  
+ <!-- ROOMS (FLIP CARDS with Background Video) -->
+
+<section id="rooms" class="reveal position-relative">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="position-absolute w-100 h-100" style="object-fit: cover; z-index: -1; opacity: 0.5;">
+    <source src="https://www.pexels.com/download/video/6466568/" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<br>
+
+
+
+  <!-- Content -->
+  <div class="container text-white py-5">
+    <div class="text-center mb-5 reveal">
+      <h2 class="section-title">Rooms & Suites</h2>
+      <p class="section-sub">Flip a card for highlights. Click <strong>View</strong> to see photos or <strong>Book</strong> to book.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Room 1 -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="card flip-card h-100 shadow-hover">
+          <div class="flip-inner">
+            <div class="flip-front card-body p-0">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop" alt="Deluxe" class="card-img-top">
+              <div class="p-3">
+                <h5 class="card-title">Deluxe Room</h5>
+                <p class="card-text">Queen bed, work desk & city view.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#roomModal1">View</button>
+                  <button class="btn btn-3d ms-auto" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                </div>
+              </div>
+            </div>
+            <div class="flip-back p-3">
+              <div>
+                <h6 class="mb-2">Highlights</h6>
+                <p class="mb-0">Rain Shower • 42" TV • Tea/Coffee • 24/7 Room Service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 2 -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="card flip-card h-100 shadow-hover">
+          <div class="flip-inner">
+            <div class="flip-front card-body p-0">
+              <img src="https://images.unsplash.com/photo-1505692952047-1a78307da8f2?q=80&w=1600&auto=format&fit=crop" class="card-img-top" alt="Executive">
+              <div class="p-3">
+                <h5 class="card-title">Executive Room</h5>
+                <p class="card-text">King bed, lounge chair & city skyline.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#roomModal2">View</button>
+                  <button class="btn btn-3d ms-auto" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                </div>
+              </div>
+            </div>
+            <div class="flip-back p-3">
+              <div>
+                <h6 class="mb-2">Highlights</h6>
+                <p class="mb-0">Mini Bar • City Skyline • Late Checkout*</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room 3 -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="card flip-card h-100 shadow-hover">
+          <div class="flip-inner">
+            <div class="flip-front card-body p-0">
+              <img src="https://images.unsplash.com/photo-1551776235-0f61f8c9f68d?q=80&w=1600&auto=format&fit=crop" class="card-img-top" alt="Studio">
+              <div class="p-3">
+                <h5 class="card-title">Studio Suite</h5>
+                <p class="card-text">Separate living, bathtub & high tea.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#roomModal3">View</button>
+                  <button class="btn btn-3d ms-auto" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                </div>
+              </div>
+            </div>
+            <div class="flip-back p-3">
+              <div>
+                <h6 class="mb-2">Highlights</h6>
+                <p class="mb-0">Living Area • Bathtub • Complimentary High Tea</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- row -->
+  </div> <!-- container -->
+</section>
+
+
+  <!-- SERVICES (TABS) -->
+  <section id="services" class="reveal">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <h2 class="section-title">Services</h2>
+          <p class="section-sub">Thoughtful amenities to make business easy and vacations breezy.</p>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><i class="bi bi-check-circle text-warning"></i> Airport transfers</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-warning"></i> Concierge & city tours</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-warning"></i> Laundry & dry-clean</li>
+            <li class="mb-2"><i class="bi bi-check-circle text-warning"></i> Banquets & meetings</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-7">
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item"><button class="nav-link active" id="dine-tab" data-bs-toggle="pill" data-bs-target="#dine">Dining</button></li>
+            <li class="nav-item"><button class="nav-link" id="spa-tab" data-bs-toggle="pill" data-bs-target="#spa">Wellness</button></li>
+            <li class="nav-item"><button class="nav-link" id="meet-tab" data-bs-toggle="pill" data-bs-target="#meet">Meetings</button></li>
+          </ul>
+          <div class="tab-content p-3 bg-light rounded-4">
+            <div class="tab-pane fade show active" id="dine">
+              <div class="d-flex gap-3 align-items-center">
+                <i class="bi bi-egg-fried fs-1"></i>
+                <p class="mb-0">All-day dining with local Indori specials — Poha, Jalebi & more.</p>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="spa">
+              <div class="d-flex gap-3 align-items-center">
+                <i class="bi bi-heart-pulse fs-1"></i>
+                <p class="mb-0">Spa therapies and a compact fitness studio to refresh you after exploring the city.</p>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="meet">
+              <div class="d-flex gap-3 align-items-center">
+                <i class="bi bi-people fs-1"></i>
+                <p class="mb-0">Boardroom for 12 & banquet up to 120 — screens, sound, and onsite support.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PREVIEW -->
+  <section id="team" class="bg-light reveal">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Meet the Team</h2>
+        <p class="section-sub">Friendly faces dedicated to your comfort.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3">
+          <div class="card text-center shadow-hover">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="GM">
+            <div class="card-body">
+              <h6 class="mb-1">Aarav Mehta</h6><small class="text-muted">General Manager</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card text-center shadow-hover">
+            <img src="https://www.opentable.co.uk/blog/wp-content/uploads/sites/110/2021/03/leadingladies-4-e1615209340995-1024x950.jpg" class="card-img-top" alt="Chef">
+            <div class="card-body">
+              <h6 class="mb-1">Riya Kulkarni</h6><small class="text-muted">Executive Chef</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card text-center shadow-hover">
+            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Front Office">
+            <div class="card-body">
+              <h6 class="mb-1">Kabir Singh</h6><small class="text-muted">Front Office</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card text-center shadow-hover">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" class="card-img-top" alt="Guest Relations">
+            <div class="card-body">
+              <h6 class="mb-1">Ishita Verma</h6><small class="text-muted">Guest Relations</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section id="gallery" class="reveal">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-sub">A peek into our spaces & vibes.</p>
+      </div>
+      <div class="row g-3 gallery">
+        <div class="col-6 col-md-4">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#imgModal" data-img="https://images.unsplash.com/photo-1502920917128-1aa500764ce7?q=80&w=1600&auto=format&fit=crop"><img src="https://img.freepik.com/premium-photo/elegant-hotel-lobby-with-marble-floor-crystal-chandelier-comfortable-seating_14117-265811.jpg?w=2000" class="img-fluid rounded" alt="Lobby"></a>
+        </div>
+        <div class="col-6 col-md-4">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#imgModal" data-img="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded" alt="Restaurant"></a>
+        </div>
+        <div class="col-6 col-md-4">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#imgModal" data-img="https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?q=80&w=1600&auto=format&fit=crop"><img src="https://tse1.mm.bing.net/th/id/OIP.TGXsL-aId96gdTAu2vn2wAHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" class="img-fluid rounded" alt="Room"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING PREVIEW -->
+  <section id="pricing" class="bg-light reveal">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Price</h2>
+        <p class="section-sub">Transparent plans — taxes extra as applicable.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-hover text-center">
+            <div class="card-body">
+              <h5>Deluxe</h5>
+              <h3 class="my-3">₹2,999<span class="fs-6 text-muted">/night</span></h3>
+              <ul class="list-unstyled small mb-3">
+                <li>Queen Bed</li>
+                <li>Breakfast Included</li>
+                <li>Free Wi-Fi</li>
+              </ul>
+              <button class="btn btn-3d" data-bs-toggle="modal" data-bs-target="#bookModal">Choose</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-hover text-center border-warning">
+            <div class="card-body">
+              <div class="badge bg-warning text-dark mb-2">Popular</div>
+              <h5>Executive</h5>
+              <h3 class="my-3">₹3,999<span class="fs-6 text-muted">/night</span></h3>
+              <ul class="list-unstyled small mb-3">
+                <li>King Bed</li>
+                <li>Mini Bar</li>
+                <li>City View</li>
+              </ul>
+              <button class="btn btn-3d" data-bs-toggle="modal" data-bs-target="#bookModal">Choose</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-hover text-center">
+            <div class="card-body">
+              <h5>Studio Suite</h5>
+              <h3 class="my-3">₹5,499<span class="fs-6 text-muted">/night</span></h3>
+              <ul class="list-unstyled small mb-3">
+                <li>Living Area</li>
+                <li>High Tea</li>
+                <li>Late Checkout*</li>
+              </ul>
+              <button class="btn btn-3d" data-bs-toggle="modal" data-bs-target="#bookModal">Choose</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+<section id="blog" class="reveal">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Blog</h2>
+      <p class="section-sub">Travel tips & Indore guides.</p>
+    </div>
+    <div class="row g-4">
+      
+      <!-- Blog 1 -->
+      <div class="col-md-4">
+        <div class="card blog-card shadow-hover">
+          <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=1600&auto=format&fit=crop" class="card-img-top" alt="Food">
+          <div class="card-body">
+            <h5 class="card-title">Indore Street Food 101</h5>
+            <p class="card-text">Where to find the best Jalebi & Poha near our hotel.</p>
+            <a href="blog.html" class="link-primary">Read more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="col-md-4">
+        <div class="card blog-card shadow-hover">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" class="card-img-top" alt="Temples">
+          <div class="card-body">
+            <h5 class="card-title">48 Hours in Indore</h5>
+            <p class="card-text">A short itinerary covering Rajwada & Sarafa Bazaar.</p>
+            <a href="blog.html" class="link-primary">Read more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog 3 (New) -->
+      <div class="col-md-4">
+        <div class="card blog-card shadow-hover">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop" class="card-img-top" alt="Culture">
+          <div class="card-body">
+            <h5 class="card-title">Cultural Walk in Indore</h5>
+            <p class="card-text">Explore temples, palaces & hidden gems of the city.</p>
+            <a href="blog.html" class="link-primary">Read more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- CITY / INDORE MAP -->
+  <section id="indore" class="parallax reveal" style="padding:60px 0;">
+    <div class="container py-4">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6 text-white">
+          <h2>City: Indore</h2>
+          <p>Known as the cleanest city in India, Indore is a delight for foodies and heritage lovers. Rajwada, Sarafa Bazaar and Chappan Dukan are close by.</p>
+          <ul class="list-unstyled small">
+            <li><i class="bi bi-geo-alt"></i> Rajwada Palace – 2.5 km</li>
+            <li><i class="bi bi-basket"></i> Sarafa Night Market – 3 km</li>
+            <li><i class="bi bi-shop"></i> Chappan Dukan – 1.2 km</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+            <iframe src="https://www.google.com/maps?q=Indore&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="text-center reveal">
+    <div class="container">
+      <h3 class="mb-3">Ready to experience Indore?</h3>
+      <a class="btn btn-3d" href="contact.html">Book Now</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-6">
+          <h5 style="color:#fff;">Indore Hotel</h5>
+          <p style="color:#d7e6ec">123 MG Road, Near Rajwada, Indore • +91 99999 11111</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="about.html" class="me-3">About</a>
+          <a href="rooms.html" class="me-3">Rooms</a>
+          <a href="contact.html" class="me-3">Book</a>
+          <div class="mt-3">
+            <a class="me-2" href="#"><i class="bi bi-facebook" style="color:#d7e6ec"></i></a>
+            <a class="me-2" href="#"><i class="bi bi-instagram" style="color:#d7e6ec"></i></a>
+            <a href="#"><i class="bi bi-twitter" style="color:#d7e6ec"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,.06);margin-top:1.5rem">
+      <div class="d-flex justify-content-between" style="color:#d7e6ec;padding-bottom:1rem">
+        <small>© <span id="year"></span> Indore Hotel</small>
+        <small>Theme: <span class="badge-theme">#344E5C</span></small>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-search"></i> Search</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search rooms, services, blog...">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-3d">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Book Modal -->
+  <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-calendar-check"></i> Book Your Stay</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full name</label>
+              <input class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input class="form-control" type="email" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Check-in</label>
+              <input class="form-control" type="date" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Check-out</label>
+              <input class="form-control" type="date" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Guests</label>
+              <select class="form-select"><option>1</option><option>2</option><option>3</option><option>4+</option></select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Room Type</label>
+              <select class="form-select"><option>Deluxe</option><option>Executive</option><option>Studio</option></select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Special requests</label>
+              <textarea class="form-control" rows="2"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-3d">Confirm Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Room Modals (3 rooms) -->
+  <div class="modal fade" id="roomModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Deluxe Room — Photos</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="carouselRoom1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1560448073-8e4b3a6a7a2c?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselRoom1" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselRoom1" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button><button class="btn btn-3d" data-bs-dismiss="modal">Book This Room</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="roomModal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Executive Room — Photos</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="carouselRoom2" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="https://images.unsplash.com/photo-1505692952047-1a78307da8f2?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselRoom2" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselRoom2" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button><button class="btn btn-3d" data-bs-dismiss="modal">Book This Room</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="roomModal3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-3">
+        <div class="modal-header">
+          <h5 class="modal-title">Studio Suite — Photos</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="carouselRoom3" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="https://images.unsplash.com/photo-1551776235-0f61f8c9f68d?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1540202404-45943e75d2e2?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+              <div class="carousel-item"><img src="https://images.unsplash.com/photo-1521783988139-893ce3c6d37b?q=80&w=1600&auto=format&fit=crop" class="d-block w-100" alt=""></div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselRoom3" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselRoom3" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button><button class="btn btn-3d" data-bs-dismiss="modal">Book This Room</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery image modal -->
+  <div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark rounded-3">
+        <button type="button" class="btn-close btn-close-white ms-auto m-2" data-bs-dismiss="modal"></button>
+        <img id="imgPreview" src="" class="w-100 rounded-3" alt="Preview">
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // navbar background on scroll
+    const nav = document.getElementById('mainNav');
+    const onScroll = () => { nav.classList.toggle('scrolled', window.scrollY > 20); };
+    document.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // reveal on scroll (intersection observer)
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // gallery image modal
+    const imgModal = document.getElementById('imgModal');
+    imgModal.addEventListener('show.bs.modal', function (event) {
+      const trigger = event.relatedTarget;
+      const src = trigger.getAttribute('data-img');
+      imgModal.querySelector('#imgPreview').src = src;
+    });
+
+    // close mobile nav on link click
+    document.querySelectorAll('#navContent .nav-link').forEach(a => {
+      a.addEventListener('click', () => { const c = document.getElementById('navContent'); bootstrap.Collapse.getInstance(c)?.hide(); });
+    });
+
+    // set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+  </script>
+</body>
+</html>

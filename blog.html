@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indore Hotel - Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #344E5C;
+      --accent: #ff6b6b;
+      --light: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: var(--brand);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: transparent;
+      transition: 0.35s;
+    }
+    .navbar.scrolled {
+      background: rgba(33, 44, 50, 0.96);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    .navbar .nav-link {
+      color: rgba(255,255,255,0.9);
+      margin-right: 0.3rem;
+      position: relative;
+    }
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.25s;
+    }
+    .navbar .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(52,78,92,0.6), rgba(52,78,92,0.6)),
+                  url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--light);
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: bold;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 60px 0 30px;
+      font-weight: bold;
+      position: relative;
+      color: var(--brand);
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
+    /* Blog Cards */
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+    }
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.1);
+    }
+    .card-title {
+      font-weight: 600;
+    }
+    .btn-dark {
+      background: var(--accent);
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-dark:hover {
+      background: #ff4c4c;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer.footer {
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      background-color: var(--brand);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    footer.footer p {
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+    footer.footer p:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width:767px){
+      .hero {
+        min-height: 50vh;
+      }
+      .card-img-top {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <i class="bi bi-building brand-icon"></i>
+      <span>Indore Hotel</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+       <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/price.html">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/contact.html">Contact</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Our Blog</h1>
+</div>
+
+<section class="container py-5">
+  <h2 class="section-title">Latest Stories & Updates</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://www.savaari.com/blog/wp-content/uploads/2022/11/image_2022_11_28T09_02_27_165Z-1-1024x576.png" class="card-img-top" alt="Blog1">
+        <div class="card-body">
+          <h5 class="card-title">Top 5 Things to Do in Indore</h5>
+          <p class="card-text">Explore culture, food, and hidden gems while staying with us.</p>
+          <a href="#" class="btn btn-dark w-100">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Blog2">
+        <div class="card-body">
+          <h5 class="card-title">Luxury Hotel Experience</h5>
+          <p class="card-text">Get the best comfort, hospitality, and elegance at Indore Hotel.</p>
+          <a href="#" class="btn btn-dark w-100">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Blog3">
+        <div class="card-body">
+          <h5 class="card-title">Why Choose Indore Hotel?</h5>
+          <p class="card-text">Discover what makes us the most loved hotel in the city.</p>
+          <a href="#" class="btn btn-dark w-100">Read More</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 Indore Hotel | Designed with ❤ Shraddha Gupta</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

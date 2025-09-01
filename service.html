@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Indore Hotel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #344E5C;
+      --accent: #ff6b6b;
+      --light: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: var(--brand);
+    }
+
+    /* Navbar */
+.navbar {
+  background: transparent;
+  transition: 0.35s;
+}
+
+
+.navbar.scrolled {
+  background: rgba(52,78,92,0.96);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.9);
+  margin-right: 0.3rem;
+  position: relative;
+}
+
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(52,78,92,0.6), rgba(52,78,92,0.6)), url('https://www.linenservice.com/img/pics/services/hotel-linen-services.jpg') center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--light);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem,5vw,3rem);
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-weight: bold;
+      color: var(--brand);
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Service Cards - 3D Flip */
+    .service-card-container {
+      perspective: 1000px;
+    }
+
+    .service-card {
+      width: 100%;
+      height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+
+    .service-card-container:hover .service-card {
+      transform: rotateY(180deg);
+    }
+
+    .service-card-front,
+    .service-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .service-card-front img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .service-card-front h5 {
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+    .service-card-front p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .service-card-back {
+      background: var(--brand);
+      color: var(--light);
+      transform: rotateY(180deg);
+      padding: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--brand);
+      color: var(--light);
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width:767px){
+      .hero { min-height: 65vh; padding: 40px 0; }
+      .service-card-front img { height: 130px; }
+      .service-card { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <i class="bi bi-building brand-icon"></i>
+      <span>Indore Hotel</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/rooms.html">Rooms</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/price.html">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5500/contact.html">Contact</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Our Services</h1>
+</div>
+
+<!-- Services Section -->
+<section class="container my-5">
+  <h2 class="section-title">What We Offer</h2>
+  <div class="row g-4">
+
+    <!-- Service Card Example -->
+    <div class="col-md-4">
+      <div class="service-card-container">
+        <div class="service-card">
+          <!-- Front -->
+          <div class="service-card-front">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.KwjnsOS_Kk3oTCkQLnF9XgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Restaurant">
+            <h5>Multi-Cuisine Restaurant</h5>
+            <p>Enjoy delicious meals with a wide variety of cuisines, freshly prepared by our expert chefs.</p>
+          </div>
+          <!-- Back -->
+          <div class="service-card-back">
+            <h5>Restaurant Info</h5>
+            <p>Open daily from 7 AM to 11 PM. Special offers for in-house guests and private dining available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repeat for other services -->
+    <div class="col-md-4">
+      <div class="service-card-container">
+        <div class="service-card">
+          <div class="service-card-front">
+            <img src="https://wallpaperaccess.com/full/1252361.jpg" alt="Spa">
+            <h5>Spa & Wellness</h5>
+            <p>Relax and rejuvenate with our spa therapies, massage treatments, and sauna facilities.</p>
+          </div>
+          <div class="service-card-back">
+            <h5>Spa Info</h5>
+            <p>Open from 9 AM to 9 PM. Book your session online or at reception. Packages available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="service-card-container">
+        <div class="service-card">
+          <div class="service-card-front">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.AgcmL3hSwIQ9g12TJCIOawHaD5?pid=Api&P=0&h=220" alt="Swimming Pool">
+            <h5>Swimming Pool</h5>
+            <p>Take a refreshing dip in our outdoor swimming pool with a relaxing atmosphere.</p>
+          </div>
+          <div class="service-card-back">
+            <h5>Pool Info</h5>
+            <p>Open 6 AM to 10 PM. Lifeguard on duty. Poolside snacks available for guests.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Indore Hotel. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
